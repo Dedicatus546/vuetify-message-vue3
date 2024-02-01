@@ -1,0 +1,12 @@
+{
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "plugins": ["simple-import-sort"],
+  "extends": ["plugin:vue/vue3-recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "vue/multi-word-component-names": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
+}

@@ -2,6 +2,20 @@
 import useMessage from "../plugin/use-message";
 
 const message = useMessage();
+
+let close: (() => void) | null = null;
+const open = () => {
+  if (close) {
+    return;
+  }
+  close = message.primary("hello", {
+    timeout: -1,
+  }).close;
+};
+const handleClose = () => {
+  close?.();
+  close = null;
+};
 </script>
 
 <template>
@@ -130,8 +144,23 @@ const message = useMessage();
                     })
                   "
                 >
-                  一直保持
+                  一直打开
                 </v-btn>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="4">
+        <v-card>
+          <v-card-title> 手动关闭 </v-card-title>
+          <v-card-text>
+            <v-row>
+              <v-col cols="6">
+                <v-btn block @click="open">一直打开</v-btn>
+              </v-col>
+              <v-col cols="6">
+                <v-btn block @click="handleClose">手动关闭</v-btn>
               </v-col>
             </v-row>
           </v-card-text>

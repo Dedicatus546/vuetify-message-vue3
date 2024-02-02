@@ -45,7 +45,7 @@ export interface MessageBottomInstance extends MessageBaseInstance {
 export type MessageInstance = MessageTopInstance | MessageBottomInstance;
 
 export const isMessageTopInstance = (
-  inst: MessageBaseInstance
+  inst: MessageBaseInstance,
 ): inst is MessageTopInstance => {
   return inst.location.startsWith("top");
 };
@@ -55,7 +55,7 @@ export interface Message<T = any> {
     text: string,
     config: T extends string
       ? Omit<MessageOptions, "text" | "color">
-      : Omit<MessageOptions, "text">
+      : Omit<MessageOptions, "text">,
   ): closable;
 }
 
@@ -65,3 +65,6 @@ export interface InjectValue extends Message<void> {
   warn: Message<"warn">;
   error: Message<"error">;
 }
+
+export * from "./message-provider.vue";
+export * from "./use-message";

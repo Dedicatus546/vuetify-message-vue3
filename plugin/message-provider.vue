@@ -3,7 +3,6 @@ import { provide, ref } from "vue";
 import { nextTick } from "vue";
 import { computed } from "vue";
 import { CSSProperties } from "vue";
-import { reactive } from "vue";
 import { VFadeTransition, VSnackbar } from "vuetify/components";
 
 import {
@@ -15,7 +14,7 @@ import {
   MessageLocation,
   MessageOptions,
   MessageTopInstance,
-} from ".";
+} from "./type";
 
 let id = 0;
 

@@ -1,8 +1,8 @@
 import { inject } from "vue";
 
-import { injectKey, InjectValue } from ".";
+import { injectKey, InjectValue } from "./type";
 
-export default function () {
+export default function useMessage() {
   const message = inject<InjectValue>(injectKey);
   if (!message) {
     throw new Error(

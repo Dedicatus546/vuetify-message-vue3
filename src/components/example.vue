@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useMessage from "../plugin/use-message";
+import { useMessage } from "../../plugin";
 
 const message = useMessage();
 

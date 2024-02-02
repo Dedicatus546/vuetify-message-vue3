@@ -1,7 +1,7 @@
 import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
-import component from "unplugin-vue-components/vite";
 import { Vuetify3Resolver } from "unplugin-vue-components/resolvers";
+import component from "unplugin-vue-components/vite";
+import { defineConfig } from "vite";
 import vueDevTools from "vite-plugin-vue-devtools";
 
 // https://vitejs.dev/config/

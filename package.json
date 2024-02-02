@@ -9,10 +9,6 @@
     "preview": "vite preview",
     "lint": "eslint --ext .js,.ts,.vue . --fix"
   },
-  "dependencies": {
-    "vue": "^3.4.15",
-    "vuetify": "^3.5.2"
-  },
   "devDependencies": {
     "@typescript-eslint/parser": "^6.20.0",
     "@vitejs/plugin-vue": "^5.0.3",
@@ -27,5 +23,9 @@
     "vite": "^5.0.12",
     "vite-plugin-vue-devtools": "^7.0.14",
     "vue-tsc": "^1.8.27"
+  },
+  "peerDependencies": {
+    "vue": ">3.0.0",
+    "vuetify": ">3.0.0"
   }
 }

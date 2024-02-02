@@ -65,6 +65,3 @@ export interface InjectValue extends Message<void> {
   warn: Message<"warn">;
   error: Message<"error">;
 }
-
-export * from "./message-provider.vue";
-export * from "./use-message";

@@ -17,10 +17,16 @@ export default defineConfig({
     lib: {
       entry: "./plugin/index.ts",
       name: "VuetifyMessageVue3",
-      formats: ["es", "umd"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       external: ["vuetify", "vue"],
+      output: {
+        globals: {
+          vue: "vue",
+          vuetify: "vuetify",
+        },
+      },
     },
   },
 });

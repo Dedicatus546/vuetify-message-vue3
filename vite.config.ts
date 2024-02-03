@@ -16,11 +16,4 @@ export default defineConfig({
     vueDevTools(),
     dts(),
   ],
-  build: {
-    lib: {
-      entry: "./src/plugin/index.ts",
-      name: "VuetifyMessage",
-      formats: ["es", "umd"],
-    },
-  },
 });

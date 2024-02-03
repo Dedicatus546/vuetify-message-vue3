@@ -19,7 +19,6 @@ export type MessageLocation =
 
 export interface MessageOptions {
   color?: VSnackbarProps["color"];
-  text: string;
   location?: MessageLocation;
   timeout?: VSnackbarProps["timeout"];
   variant?: VSnackbarProps["variant"];
@@ -28,6 +27,7 @@ export interface MessageOptions {
 export interface MessageBaseInstance extends Required<MessageOptions> {
   id: number;
   modelValue: boolean;
+  text: string;
   top?: number;
   bottom?: number;
 }
@@ -53,16 +53,14 @@ export const isMessageTopInstance = (
 export interface Message<T = any> {
   (
     text: string,
-    config: T extends string
-      ? Omit<MessageOptions, "text" | "color">
-      : Omit<MessageOptions, "text">,
+    config?: T extends string ? Omit<MessageOptions, "color"> : MessageOptions,
   ): closable;
 }
 
 export interface InjectValue extends Message<void> {
   primary: Message<"primary">;
   success: Message<"success">;
-  warn: Message<"warn">;
+  warning: Message<"warning">;
   error: Message<"error">;
 }
 

@@ -6,7 +6,7 @@ export default function useMessage() {
   const message = inject<InjectValue>(injectKey);
   if (!message) {
     throw new Error(
-      "[vuetify-message]: you must use `message` function after using `message-provider` component in your parent component.",
+      "[vuetify-message-vue3]: you must use `message` function after using `message-provider` component in your parent component.",
     );
   }
   return message;

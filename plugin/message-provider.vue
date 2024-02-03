@@ -16,6 +16,20 @@ import {
   MessageTopInstance,
 } from "./type";
 
+const defaultMessageOptions: MessageOptions = {
+  color: "primary",
+  location: "top center",
+  timeout: 5000,
+  variant: "elevated",
+};
+
+const componentOptions = withDefaults(defineProps<MessageOptions>(), {
+  color: "primary",
+  location: "top center",
+  timeout: 5000,
+  variant: "elevated",
+});
+
 let id = 0;
 
 const instanceLocationMap = ref<
@@ -44,13 +58,6 @@ const updateDom = (id: MessageInstance["id"], ref: VSnackbar | null) => {
 const locationList = computed<Array<MessageLocation>>(
   () => Object.keys(instanceLocationMap.value) as MessageLocation[],
 );
-
-const defaultMessageOptions: MessageOptions = {
-  text: "",
-  location: "top center",
-  timeout: 5000,
-  variant: "elevated",
-};
 
 const remove = (instance: MessageInstance) => {
   const { id, location } = instance;
@@ -124,13 +131,16 @@ const getStyle = (inst: MessageInstance) => {
 };
 
 const show = ((
-  textOrConfig: string | MessageOptions,
-  messageOptions: MessageOptions,
+  text: string | MessageOptions,
+  messageOptions?: MessageOptions,
 ) => {
   const configs = {} as MessageOptions;
-  Object.assign(configs, defaultMessageOptions, messageOptions, {
-    text: textOrConfig,
-  });
+  Object.assign(
+    configs,
+    defaultMessageOptions,
+    componentOptions,
+    messageOptions,
+  );
 
   const location = configs.location!;
 
@@ -144,7 +154,7 @@ const show = ((
     id: instanceId,
     modelValue: true,
     location,
-    text: configs.text,
+    text,
     color: configs.color!,
     timeout: configs.timeout!,
     variant: configs.variant!,
@@ -165,9 +175,9 @@ const show = ((
   };
 }) as InjectValue;
 
-(["primary", "success", "warn", "error"] as const).forEach((key) => {
+(["primary", "success", "warning", "error"] as const).forEach((key) => {
   show[key] = (text, config) => {
-    Object.assign(config, {
+    config = Object.assign({}, config, {
       color: key,
     });
     return show(text, config);
@@ -192,13 +202,14 @@ provide<InjectValue>(injectKey, show);
       :model-value="inst.modelValue"
       :location="inst.location"
       :color="inst.color"
-      :text="inst.text"
       :timeout="inst.timeout"
       :variant="inst.variant"
       :transition="{
         onAfterLeave: () => remove(inst),
         component: VFadeTransition,
       }"
-    ></v-snackbar>
+    >
+      {{ inst.text }}
+    </v-snackbar>
   </template>
 </template>

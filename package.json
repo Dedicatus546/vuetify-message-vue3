@@ -3,6 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports":{
+    ".": {
+      "import": {
+        "default": "./dist/vuetify-message-vue3.js"
+      },
+      "require": {
+        "default": "./dist/vuetify-message-vue3.cjs"
+      }
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build:web": "vue-tsc && vite build",

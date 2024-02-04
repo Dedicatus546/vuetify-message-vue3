@@ -17,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: "./plugin/index.ts",
       name: "VuetifyMessageVue3",
-      formats: ["es", "cjs"],
+      formats: ["es"],
     },
     rollupOptions: {
       external: ["vuetify", "vue"],

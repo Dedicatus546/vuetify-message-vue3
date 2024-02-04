@@ -18,7 +18,6 @@
   "exports": {
     ".": {
       "import": "./dist/vuetify-message-vue3.js",
-      "require": "./dist/vuetify-message-vue3.cjs",
       "types": "./dist/index.d.ts"
     }
   },

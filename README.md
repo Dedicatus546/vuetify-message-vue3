@@ -1,8 +1,8 @@
 # Vuetify Message 
 
-It is a lib that can let you use `message(text)` to use a `v-snackbar` component.
+It is a lib that can make you use `message(text)` to create a `v-snackbar` component.
 
-## version
+## dependency
 
 you must use `vue@>3.0.0` and `vuetify@>3.0.0`.
 

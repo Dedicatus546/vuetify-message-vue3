@@ -1,19 +1,31 @@
 {
   "name": "vuetify-message-vue3",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "types": "./dist/index.d.ts",
+  "author": {
+    "email": "1607611087@qq.com",
+    "name": "Par9uet",
+    "url": "https://github.com/Dedicatus546"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "vuetify",
+    "message",
+    "composable"
+  ],
   "exports": {
     ".": {
-      "import": {
-        "default": "./dist/vuetify-message-vue3.js"
-      },
-      "require": {
-        "default": "./dist/vuetify-message-vue3.cjs"
-      }
+      "import": "./dist/vuetify-message-vue3.js",
+      "require": "./dist/vuetify-message-vue3.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist",
+    "plugin"
+  ],
   "scripts": {
     "dev": "vite",
     "build:web": "vue-tsc && vite build",

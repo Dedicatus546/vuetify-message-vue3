@@ -78,25 +78,25 @@ interface MessageConfig {
 
 // message.primary 
 // color property will be set 'primary'
-function primary(text: string, config: Omit<MessageConfig, "color">): {
+function primary(text: string, config?: Omit<MessageConfig, "color">): {
   close: () => void;
 }
 
 // message.success 
 // color property will be set 'success'
-function success(text: string, config: Omit<MessageConfig, "color">): {
+function success(text: string, config?: Omit<MessageConfig, "color">): {
   close: () => void;
 }
 
 // message.warn 
-// color property will be set 'warn'
-function warn(text: string, config: Omit<MessageConfig, "color">): {
+// color property will be set 'warning'
+function warning(text: string, config?: Omit<MessageConfig, "color">): {
   close: () => void;
 }
 
 // message.error 
 // color property will be set 'error'
-function error(text: string, config: Omit<MessageConfig, "color">): {
+function error(text: string, config?: Omit<MessageConfig, "color">): {
   close: () => void;
 }
 ```

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "exports":{
+  "exports": {
     ".": {
       "import": {
         "default": "./dist/vuetify-message-vue3.js"
@@ -19,7 +19,8 @@
     "build:web": "vue-tsc && vite build",
     "build:lib": "vite build -c vite.config.build.ts",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.ts,.vue . --fix"
+    "lint": "eslint --ext .js,.ts,.vue . --fix",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^6.20.0",
@@ -29,6 +30,8 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-vue": "^9.21.1",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.1",
     "prettier": "^3.2.4",
     "typescript": "^5.3.3",
     "unplugin-vue-components": "^0.26.0",
@@ -40,5 +43,8 @@
   "peerDependencies": {
     "vue": ">3.0.0",
     "vuetify": ">3.0.0"
+  },
+  "lint-staged": {
+    "src/**/*!(.d).{vue,ts}": "eslint --fix"
   }
 }

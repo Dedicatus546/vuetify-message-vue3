@@ -45,6 +45,7 @@
     "vuetify": ">3.0.0"
   },
   "lint-staged": {
-    "src/**/*!(.d).{vue,ts}": "eslint --fix"
+    "src/**/*.{vue,ts}": "eslint --fix",
+    "plugin/**/*.{vue,ts}": "eslint --fix"
   }
 }

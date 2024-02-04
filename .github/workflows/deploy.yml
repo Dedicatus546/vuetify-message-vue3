@@ -30,6 +30,7 @@ jobs:
           node-version: 18
 
       - name: install deps and build
+        run: |
           pnpm install
           pnpm run docs:build
 

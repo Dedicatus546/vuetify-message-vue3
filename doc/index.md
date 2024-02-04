@@ -14,11 +14,11 @@ hero:
     src: "/vuetify-logo-light.svg"
 
 features:
-  - title: simple
+  - title: Simple
     icon: 😎
-    details: only export one component and one function.
-  - title: configurable
+    details: Only export one component and one function.
+  - title: Configurable
     icon: 🛠️
-    details: six locations, timeout, color, variant.
+    details: Support six locations, timeout, color, variant property.
 ---
 

@@ -1,6 +1,6 @@
 # Vuetify Message 
 
-It is a lib that can let you use `message(text, {})` to show a `v-snackbar` component.
+It is a lib that can let you use `message(text)` to use a `v-snackbar` component.
 
 ## version
 
@@ -16,8 +16,7 @@ npm add vuetify-message-vue3
 # or yarn add vuetify-message-vue3
 ```
 
-### put you content in MessageProvider which is exported from this package.
-
+### put you content in `MessageProvider` component.
 
 ```vue
 <!-- App.vue -->

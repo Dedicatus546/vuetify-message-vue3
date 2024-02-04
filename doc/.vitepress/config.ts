@@ -14,7 +14,6 @@ export default defineConfig({
       }),
     ]
   },
-  base: "/vuetify-message-vue3/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [{ text: "Home", link: "/" }],

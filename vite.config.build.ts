@@ -20,13 +20,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["vuetify", "vue"],
-      output: {
-        globals: {
-          vue: "vue",
-          vuetify: "vuetify",
-        },
-      },
+      external: ["vuetify/components", "vue"],
     },
   },
 });

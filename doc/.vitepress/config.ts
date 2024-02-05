@@ -12,7 +12,12 @@ export default defineConfig({
         dts: "./src/components.d.ts",
         resolvers: [Vuetify3Resolver()],
       }),
-    ]
+    ],
+    ssr: {
+      noExternal:[
+        "vuetify"
+      ]
+    }
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

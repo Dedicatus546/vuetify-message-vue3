@@ -1,11 +1,50 @@
-<script setup>
+<script setup lang="ts">
 import Example1 from "./src/example-1.vue";
 import Example2 from "./src/example-2.vue";
 import Example3 from "./src/example-3.vue";
 import Example4 from "./src/example-4.vue";
 import Example5 from "./src/example-5.vue";
+import { onMounted } from "vue";
+import { useTheme } from "vuetify";
 import { MessageProvider } from "../plugin";
+
+const vuetifyTheme = useTheme();
+
+onMounted(() => {
+  const isDarkModeMathMedia = matchMedia("(prefers-color-scheme: dark)");
+
+  const updateTheme = (theme: string) => {
+    const userSetTheme = localStorage.getItem("vitepress-theme-appearance");
+    vuetifyTheme.global.name.value =
+      userSetTheme === null || userSetTheme === "auto" ? theme : userSetTheme;
+  };
+  updateTheme(isDarkModeMathMedia.matches ? "dark" : "light");
+
+  isDarkModeMathMedia.addEventListener("change", (mql) => {
+    updateTheme(mql.matches ? "dark" : "light");
+  });
+
+  const __setItem = localStorage.setItem.bind(localStorage) as Storage["setItem"];
+
+  localStorage.setItem = function (key: string, value: string) {
+    if (key === "vitepress-theme-appearance") {
+      if (value !== "auto") {
+        vuetifyTheme.global.name.value = value;
+      } else {
+        vuetifyTheme.global.name.value = matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches
+          ? "dark"
+          : "light";
+      }
+    }
+    return __setItem(key, value);
+  };
+})
+
 </script>
+
+<MessageProvider>
 
 # Demo
 
@@ -13,9 +52,7 @@ import { MessageProvider } from "../plugin";
 
 <<< ./src/example-1.vue {vue}
 
-<MessageProvider>
-  <Example1 />
-</MessageProvider>
+<Example1 />
 
 > [!TIP]
 > If you find the component lost the animation, the reason is that the vitepress check `prefers-reduced-motion`.
@@ -28,30 +65,25 @@ import { MessageProvider } from "../plugin";
 
 <<< ./src/example-2.vue {vue}
 
-<MessageProvider>
-  <Example2 />
-</MessageProvider>
+<Example2 />
+
 
 ## color
 
 <<< ./src/example-3.vue {vue}
 
-<MessageProvider>
-  <Example3 />
-</MessageProvider>
+<Example3 />
 
 ## timeout
 
 <<< ./src/example-4.vue {vue}
 
-<MessageProvider>
-  <Example4 />
-</MessageProvider>
+<Example4 />
 
 ## variant
 
 <<< ./src/example-5.vue {vue}
 
-<MessageProvider>
-  <Example5 />
+<Example5 />
+
 </MessageProvider>

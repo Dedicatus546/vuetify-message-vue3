@@ -9,7 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [
       component({
-        dts: "./src/component.d.ts",
+        dts: "./src/components.d.ts",
         resolvers: [Vuetify3Resolver()],
       }),
     ]
@@ -27,6 +27,7 @@ export default defineConfig({
       { text: "Introduce", link: "/introduce" },
       { text: "Get Start", link: "/get-start" },
       { text: "API", link: "/api" },
+      { text: "Demo", link: "/demo" },
     ],
 
     socialLinks: [

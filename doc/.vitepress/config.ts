@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import vueJsx from "@vitejs/plugin-vue-jsx"
 import { Vuetify3Resolver } from "unplugin-vue-components/resolvers";
 import component from "unplugin-vue-components/vite";
 
@@ -8,6 +9,7 @@ export default defineConfig({
   description: "A plugin to use snackbar quickly for vue3 and vuetify!",
   vite: {
     plugins: [
+      vueJsx(),
       component({
         dts: "./src/components.d.ts",
         resolvers: [Vuetify3Resolver()],

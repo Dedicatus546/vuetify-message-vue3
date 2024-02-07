@@ -1,7 +1,9 @@
-import { ExtractPropTypes } from "vue";
+import { ExtractPropTypes, VNodeChild } from "vue";
 import { VSnackbar } from "vuetify/components";
 
 export const injectKey = Symbol("vuetify-message");
+
+export type TextType = string | (() => VNodeChild);
 
 export interface closable {
   close: () => void;
@@ -27,7 +29,7 @@ export interface MessageOptions {
 export interface MessageBaseInstance extends Required<MessageOptions> {
   id: number;
   modelValue: boolean;
-  text: string;
+  text: TextType;
   top?: number;
   bottom?: number;
 }
@@ -52,7 +54,7 @@ export const isMessageTopInstance = (
 
 export interface Message<T = any> {
   (
-    text: string,
+    text: TextType,
     config?: T extends string ? Omit<MessageOptions, "color"> : MessageOptions,
   ): closable;
 }

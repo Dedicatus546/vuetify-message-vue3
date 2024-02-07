@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { provide, ref } from "vue";
-import { nextTick } from "vue";
-import { computed } from "vue";
-import { CSSProperties } from "vue";
+import { computed, CSSProperties, nextTick, provide, ref } from "vue";
 import { VFadeTransition, VSnackbar } from "vuetify/components";
 
 import {
   injectKey,
   InjectValue,
   isMessageTopInstance,
+  MessageBaseInstance,
   MessageBottomInstance,
   MessageInstance,
   MessageLocation,
@@ -105,7 +103,7 @@ const patchPosition = (removeInst: MessageInstance, index: number) => {
   }
 };
 
-const getNextDistance = (inst: MessageInstance, gutter: number = 10) => {
+const getNextDistance = (inst: MessageBaseInstance, gutter: number = 10) => {
   const location = inst.location;
   const instanceList = instanceLocationMap.value[location];
   if (instanceList === null) {
@@ -130,10 +128,7 @@ const getStyle = (inst: MessageInstance) => {
   return style;
 };
 
-const show = ((
-  text: string | MessageOptions,
-  messageOptions?: MessageOptions,
-) => {
+const message: InjectValue = ((text, messageOptions) => {
   const configs = {} as MessageOptions;
   Object.assign(
     configs,
@@ -166,7 +161,7 @@ const show = ((
     messageInstance.bottom = nextPostion;
   }
 
-  instanceList.push(messageInstance);
+  instanceList.push(messageInstance as MessageInstance);
 
   return {
     close: () => {
@@ -176,15 +171,15 @@ const show = ((
 }) as InjectValue;
 
 (["primary", "success", "warning", "error"] as const).forEach((key) => {
-  show[key] = (text, config) => {
+  message[key] = (text, config) => {
     config = Object.assign({}, config, {
       color: key,
     });
-    return show(text, config);
+    return message(text, config);
   };
 });
 
-provide<InjectValue>(injectKey, show);
+provide<InjectValue>(injectKey, message);
 </script>
 
 <template>
@@ -209,7 +204,10 @@ provide<InjectValue>(injectKey, show);
         component: VFadeTransition,
       }"
     >
-      {{ inst.text }}
+      <template v-if="typeof inst.text === 'string'">
+        {{ inst.text }}
+      </template>
+      <component :is="inst.text" v-else></component>
     </v-snackbar>
   </template>
 </template>

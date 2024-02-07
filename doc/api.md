@@ -25,7 +25,7 @@ It will return a object that contain a close method that can hide snackbar immed
 ```typescript
 export interface Message<T = any> {
   (
-    text: string,
+    text: string | (() => VNodeChild),
     config?: T extends string ? Omit<MessageOptions, "color"> : MessageOptions,
   ): {
     close: () => void;

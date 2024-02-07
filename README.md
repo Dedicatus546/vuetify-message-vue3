@@ -61,7 +61,8 @@ function message(text: string, config: MessageConfig): {
 interface MessageConfig {
   // VSnackbar's color prop
   color?: VSnackbarProps["color"];
-  text: string;
+  // string or jsx
+  text: string | (() => VNodeChild);
   // six location 
   location?:
     | "top left"
@@ -78,25 +79,37 @@ interface MessageConfig {
 
 // message.primary 
 // color property will be set 'primary'
-function primary(text: string, config?: Omit<MessageConfig, "color">): {
+function primary(
+  text: string | (() => VNodeChild), 
+  config?: Omit<MessageConfig, "color">
+): {
   close: () => void;
 }
 
 // message.success 
 // color property will be set 'success'
-function success(text: string, config?: Omit<MessageConfig, "color">): {
+function success(
+  text: string | (() => VNodeChild), 
+  config?: Omit<MessageConfig, "color">
+): {
   close: () => void;
 }
 
 // message.warn 
 // color property will be set 'warning'
-function warning(text: string, config?: Omit<MessageConfig, "color">): {
+function warning(
+  text: string | (() => VNodeChild), 
+  config?: Omit<MessageConfig, "color">
+): {
   close: () => void;
 }
 
 // message.error 
 // color property will be set 'error'
-function error(text: string, config?: Omit<MessageConfig, "color">): {
+function error(
+  text: string | (() => VNodeChild),
+  config?: Omit<MessageConfig, "color">
+): {
   close: () => void;
 }
 ```

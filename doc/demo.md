@@ -4,6 +4,7 @@ import Example2 from "./src/example-2.vue";
 import Example3 from "./src/example-3.vue";
 import Example4 from "./src/example-4.vue";
 import Example5 from "./src/example-5.vue";
+import Example6 from "./src/example-6.vue";
 import { onMounted } from "vue";
 import { useTheme } from "vuetify";
 import { MessageProvider } from "../plugin";
@@ -85,5 +86,11 @@ onMounted(() => {
 <<< ./src/example-5.vue {vue}
 
 <Example5 />
+
+## html content or other component
+
+<<< ./src/example-6.vue {vue}
+
+<Example6 />
 
 </MessageProvider>

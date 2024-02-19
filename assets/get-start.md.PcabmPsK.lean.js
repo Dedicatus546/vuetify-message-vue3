@@ -1,0 +1,1 @@
+import{_ as s,y as i,x as a,a6 as e}from"./chunks/framework.v0lpTJs1.js";const c=JSON.parse('{"title":"Dependency","description":"","frontmatter":{},"headers":[],"relativePath":"get-start.md","filePath":"get-start.md"}'),t={name:"get-start.md"},n=e("",11),l=[n];function h(p,k,r,d,E,o){return a(),i("div",null,l)}const y=s(t,[["render",h]]);export{c as __pageData,y as default};

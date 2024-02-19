@@ -42,7 +42,7 @@ import { useMessage } from "vuetify-message-vue3";
 const message = useMessage();
 
 const show = () => {
-  message.show("hello world!");
+  message("hello world!");
 }
 </script>
 
